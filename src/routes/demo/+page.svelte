@@ -1,1 +1,1 @@
-<a href="/demo/lucia">lucia</a>
+<a href="/auth/">lucia</a>
