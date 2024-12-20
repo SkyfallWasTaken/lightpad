@@ -1,10 +1,13 @@
 export interface Project {
     name: string | null;
-    files: File[];
+    Item: Item[];
 }
 
-export interface File {
+export interface Item {
     name: string;
+    type: "file" | "folder";
+    children?: Item[];
+
     language: string;
     content: string;
 }

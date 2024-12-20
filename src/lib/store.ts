@@ -1,9 +1,9 @@
 import { writable } from 'svelte/store';
-import type { Project, File } from './code';
+import type { Project, Item } from './code';
 
 export const project = writable<Project>({
     name: null,
-    files: [
+    Item: [
         {
             name: 'index.html',
             language: 'html',
