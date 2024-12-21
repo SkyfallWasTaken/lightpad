@@ -1,13 +1,21 @@
 export interface Project {
-    name: string | null;
-    Item: Item[];
+	name: string | null;
+	children: Child[];
+}
+export interface BaseChild {
+	name: string;
+	type: 'file' | 'folder';
+	children?: Child[];
 }
 
-export interface Item {
-    name: string;
-    type: "file" | "folder";
-    children?: Item[];
-
-    language: string;
-    content: string;
+export interface FileChild extends BaseChild {
+	type: 'file';
+	language: string;
+	content: string;
 }
+
+export interface FolderChild extends BaseChild {
+	type: 'folder';
+}
+
+export type Child = FileChild | FolderChild;
