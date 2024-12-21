@@ -16,10 +16,6 @@
 		elements: { tree },
 		states: { selectedItem }
 	} = ctx;
-
-	$effect(() => {
-		console.log($selectedItem);
-	});
 </script>
 
 <div class="h-full">
@@ -34,7 +30,15 @@
 		/>
 		<Pane defaultSize={80}>
 			{#if $selectedItem}
-				<Editor child={props[$selectedItem]} />
+				<Editor
+					child={{
+						name: $selectedItem.getAttribute('data-id')!.split('-')[0],
+						content: '',
+						type: 'file',
+						language: 'html',
+						icon: 'svelte'
+					}}
+				/>
 			{/if}
 		</Pane>
 	</PaneGroup>

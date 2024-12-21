@@ -41,16 +41,21 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@catppuccin/palette": "^1.7.1",
 		"@codemirror/lang-html": "^6.4.9",
 		"@fontsource/fira-mono": "^5.1.0",
 		"@libsql/client": "^0.9.0",
 		"@node-rs/argon2": "^1.1.0",
+		"@novacbn/svelte-codejar": "^0.1.2",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
+		"@types/prismjs": "^1.26.5",
+		"codejar": "^4.2.0",
 		"drizzle-orm": "^0.33.0",
 		"paneforge": "^0.0.6",
+		"prismjs": "^1.29.0",
 		"svelte-codemirror-editor": "^1.4.1"
 	}
 }
