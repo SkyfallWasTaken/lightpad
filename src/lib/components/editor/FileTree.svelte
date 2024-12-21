@@ -3,15 +3,6 @@
 	import JS from '$lib/components/editor/icons/JS.svelte';
 	import Svelte from '$lib/components/editor/icons/Svelte.svelte';
 
-	type Icon = 'svelte' | 'folder' | 'js';
-
-	export type TreeItem = {
-		title: string;
-		icon: Icon;
-
-		children?: TreeItem[];
-	};
-
 	export const icons = {
 		svelte: Svelte,
 		folder: Folder,
@@ -25,7 +16,8 @@
 	import { melt, type TreeView } from '@melt-ui/svelte';
 	import { getContext } from 'svelte';
 
-	export let treeItems: TreeItem[];
+	import { project } from '$lib/store';
+
 	export let level = 1;
 
 	const {
@@ -34,8 +26,8 @@
 	} = getContext<TreeView>('tree');
 </script>
 
-{#each treeItems as { title, icon, children }, i}
-	{@const itemId = `${title}-${i}`}
+{#each $project.children as { name, icon, children }, i}
+	{@const itemId = `${name}-${i}`}
 	{@const hasChildren = !!children?.length}
 
 	<li class={level !== 1 ? 'pl-4' : ''}>
@@ -53,7 +45,7 @@
 				<svelte:component this={icons[icon]} class="h-4 w-4" />
 			{/if}
 
-			<span class="select-none">{title}</span>
+			<span class="select-none">{name}</span>
 
 			<!-- Selected icon. -->
 			{#if $isSelected(itemId)}

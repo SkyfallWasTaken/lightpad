@@ -49,6 +49,7 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"drizzle-orm": "^0.33.0",
-		"paneforge": "^0.0.6"
+		"paneforge": "^0.0.6",
+		"svelte-codemirror-editor": "^1.4.1"
 	}
 }

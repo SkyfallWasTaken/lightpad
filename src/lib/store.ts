@@ -6,6 +6,7 @@ export const project = writable<Project>({
 	children: [
 		{
 			name: 'index.html',
+			icon: 'svelte',
 			type: 'file',
 			language: 'html',
 			content: ''

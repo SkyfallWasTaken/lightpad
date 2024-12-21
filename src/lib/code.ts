@@ -2,8 +2,12 @@ export interface Project {
 	name: string | null;
 	children: Child[];
 }
+
+type Icon = 'svelte' | 'folder' | 'js';
+
 export interface BaseChild {
 	name: string;
+	icon: Icon;
 	type: 'file' | 'folder';
 	children?: Child[];
 }
