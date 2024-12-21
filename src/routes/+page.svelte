@@ -2,7 +2,9 @@
 	import { PaneGroup, Pane, PaneResizer } from 'paneforge';
 	import { createTreeView } from '@melt-ui/svelte';
 	import { setContext } from 'svelte';
+	import { type TreeView } from '@melt-ui/svelte';
 
+	import Editor from '$lib/components/editor/Editor.svelte';
 	import Tree from '$lib/components/editor/FileTree.svelte';
 
 	const ctx = createTreeView({
@@ -11,8 +13,13 @@
 	setContext('tree', ctx);
 
 	const {
-		elements: { tree }
+		elements: { tree },
+		states: { selectedItem }
 	} = ctx;
+
+	$effect(() => {
+		console.log($selectedItem);
+	});
 </script>
 
 <div class="h-full">
@@ -25,6 +32,10 @@
 		<PaneResizer
 			class="relative flex w-[1px] items-center justify-center border-r border-surface0 px-[7px] focus:border-surface1"
 		/>
-		<Pane defaultSize={80}>Pane 2</Pane>
+		<Pane defaultSize={80}>
+			{#if $selectedItem}
+				<Editor child={props[$selectedItem]} />
+			{/if}
+		</Pane>
 	</PaneGroup>
 </div>
