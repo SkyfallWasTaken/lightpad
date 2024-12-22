@@ -23,3 +23,11 @@ export interface FolderChild extends BaseChild {
 }
 
 export type Child = FileChild | FolderChild;
+
+export function generateUniqueId(name: string, parentPath: string = ''): string {
+    const timestamp = Date.now();
+    const random = Math.floor(Math.random() * 1000);
+    const safeName = name.replace(/[^a-zA-Z0-9-]/g, '-');
+    const safePath = parentPath.replace(/[^a-zA-Z0-9-]/g, '-');
+    return `${safePath}${safePath ? '-' : ''}${safeName}-${timestamp}-${random}`;
+}

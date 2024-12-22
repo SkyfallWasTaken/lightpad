@@ -17,9 +17,11 @@
 	import { getContext } from 'svelte';
 
 	import { project } from '$lib/store';
+	import { generateUniqueId } from '$lib/code';
 
 	export let level = 1;
 	export let treeItems = $project.children;
+	export let parentPath = '';
 
 	const {
 		elements: { item, group },
@@ -28,8 +30,9 @@
 </script>
 
 {#each treeItems as { name, icon, children }, i}
-	{@const itemId = `${name}-${i}`}
+	{@const itemId = generateUniqueId(name, parentPath)}
 	{@const hasChildren = !!children?.length}
+	{@const currentPath = `${parentPath}${parentPath ? '-' : ''}${name}`}
 
 	<li class={level !== 1 ? 'pl-4' : ''}>
 		<button
@@ -54,10 +57,10 @@
 			{/if}
 		</button>
 
-		{#if children}
+		{#if hasChildren}
 			{#if $isExpanded(itemId)}
-				<ul use:melt={$group({ id: itemId })}>
-					<svelte:self treeItems={children} level={level + 1} />
+				<ul {...$group({ id: itemId })} class="mt-1">
+					<svelte:self treeItems={children} level={level + 1} parentPath={currentPath} />
 				</ul>
 			{/if}
 		{/if}
