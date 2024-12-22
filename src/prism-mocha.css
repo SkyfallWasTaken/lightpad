@@ -2,6 +2,7 @@ code[class*='language-'],
 pre[class*='language-'] {
 	color: #cdd6f4;
     text-shadow: none;
+	font-family: 'Fira Mono', monospace;
 }
 
 :not(pre) > code[class*='language-'],
