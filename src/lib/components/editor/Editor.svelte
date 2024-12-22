@@ -17,24 +17,15 @@
 	let el: HTMLElement;
 	let loaded = false;
 
-	// Map file extensions to Prism language identifiers
-	const languageMap: Record<string, string> = {
-		ts: 'typescript',
-		js: 'javascript',
-		svelte: 'svelte',
-		css: 'css',
-		md: 'markdown',
-		json: 'json'
-	};
-
 	onMount(async () => {
 		const { CodeJar } = await import('codejar');
 
 		// Force Prism to highlight with the correct language
 		const highlight = (editor: HTMLElement) => {
-			const lang = languageMap[child.language] || child.language;
-			editor.className = `language-${lang}`;
+			console.time('highlight');
+			editor.className = `language-${child.language} line-numbers`;
 			Prism.highlightElement(editor);
+			console.timeEnd('highlight');
 		};
 
 		const jar = new CodeJar(el, highlight);
@@ -44,7 +35,7 @@
 	export let child: Child & { type: 'file' };
 </script>
 
-<code bind:this={el} class="line-numbers language-{child.language}"></code>
+<pre bind:this={el} class="language-{child.language}"></pre>
 {#if !loaded}
 	<pre><code>{child.content}</code></pre>
 {/if}

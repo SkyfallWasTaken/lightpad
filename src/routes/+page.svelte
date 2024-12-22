@@ -35,7 +35,7 @@
 						name: $selectedItem.getAttribute('data-id')!.split('-')[0],
 						content: '',
 						type: 'file',
-						language: 'html',
+						language: 'php',
 						icon: 'svelte'
 					}}
 				/>
