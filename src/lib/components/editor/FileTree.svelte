@@ -15,9 +15,7 @@
 <script lang="ts">
 	import { melt, type TreeView } from '@melt-ui/svelte';
 	import { getContext } from 'svelte';
-
 	import { project } from '$lib/store';
-	import { generateUniqueId } from '$lib/code';
 
 	export let level = 1;
 	export let treeItems = $project.children;
@@ -30,9 +28,9 @@
 </script>
 
 {#each treeItems as { name, icon, children }, i}
-	{@const itemId = generateUniqueId(name, parentPath)}
+	{@const itemId = `${parentPath}${parentPath ? '/' : ''}${name}`}
 	{@const hasChildren = !!children?.length}
-	{@const currentPath = `${parentPath}${parentPath ? '-' : ''}${name}`}
+	{@const currentPath = `${parentPath}${parentPath ? '/' : ''}${name}`}
 
 	<li class={level !== 1 ? 'pl-4' : ''}>
 		<button

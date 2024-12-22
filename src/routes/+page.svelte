@@ -5,7 +5,7 @@
 
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import Tree from '$lib/components/editor/FileTree.svelte';
-	import { project } from '$lib/store';
+	import { getChildFromPath, project } from '$lib/store';
 
 	const ctx = createTreeView({
 		// defaultExpanded: ['lib-0', 'tree-0']
@@ -31,9 +31,10 @@
 		<Pane defaultSize={80}>
 			{#if $selectedItem}
 				{@const fileName = $selectedItem.getAttribute('data-id')!.split('-')[0]}
-				{@const selectedFile = $project.children.find((child) => child.name === fileName)}
+				{@const selectedFile = getChildFromPath($project, fileName)}
 				{#if selectedFile && selectedFile.type === 'file'}
 					<Editor child={selectedFile} />
+					<!-- {JSON.stringify(selectedFile, null, 2)} -->
 				{/if}
 			{/if}
 		</Pane>
