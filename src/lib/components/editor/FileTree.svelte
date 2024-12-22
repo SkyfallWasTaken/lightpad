@@ -19,6 +19,7 @@
 	import { project } from '$lib/store';
 
 	export let level = 1;
+	export let treeItems = $project.children;
 
 	const {
 		elements: { item, group },
@@ -26,7 +27,7 @@
 	} = getContext<TreeView>('tree');
 </script>
 
-{#each $project.children as { name, icon, children }, i}
+{#each treeItems as { name, icon, children }, i}
 	{@const itemId = `${name}-${i}`}
 	{@const hasChildren = !!children?.length}
 
@@ -54,9 +55,11 @@
 		</button>
 
 		{#if children}
-			<ul use:melt={$group({ id: itemId })}>
-				<svelte:self treeItems={children} level={level + 1} />
-			</ul>
+			{#if $isExpanded(itemId)}
+				<ul use:melt={$group({ id: itemId })}>
+					<svelte:self treeItems={children} level={level + 1} />
+				</ul>
+			{/if}
 		{/if}
 	</li>
 {/each}

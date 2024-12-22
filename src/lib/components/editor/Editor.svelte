@@ -18,7 +18,7 @@
 	let loaded = false;
 
 	onMount(async () => {
-		const { CodeJar } = await import('codejar');
+		const { CodeJar } = await import('codejar') as { CodeJar: any };
 
 		// Force Prism to highlight with the correct language
 		const highlight = (editor: HTMLElement) => {
@@ -29,6 +29,7 @@
 		};
 
 		const jar = new CodeJar(el, highlight);
+		jar.updateCode(child.content);
 		loaded = true;
 	});
 

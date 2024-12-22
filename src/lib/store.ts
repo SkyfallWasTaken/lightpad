@@ -9,7 +9,21 @@ export const project = writable<Project>({
 			icon: 'svelte',
 			type: 'file',
 			language: 'html',
-			content: ''
+			content: '<h1>Hello world</h1>'
+		},
+		{
+			name: "src",
+			icon: 'folder',
+			type: 'folder',
+			children: [
+				{
+					name: 'index.html',
+					icon: 'svelte',
+					type: 'file',
+					language: 'html',
+					content: '<h1>Goodbye world</h1>'
+				}
+			]
 		}
 	]
 });

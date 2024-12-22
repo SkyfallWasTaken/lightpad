@@ -2,10 +2,10 @@
 	import { PaneGroup, Pane, PaneResizer } from 'paneforge';
 	import { createTreeView } from '@melt-ui/svelte';
 	import { setContext } from 'svelte';
-	import { type TreeView } from '@melt-ui/svelte';
 
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import Tree from '$lib/components/editor/FileTree.svelte';
+	import { project } from '$lib/store';
 
 	const ctx = createTreeView({
 		// defaultExpanded: ['lib-0', 'tree-0']
@@ -30,15 +30,11 @@
 		/>
 		<Pane defaultSize={80}>
 			{#if $selectedItem}
-				<Editor
-					child={{
-						name: $selectedItem.getAttribute('data-id')!.split('-')[0],
-						content: '',
-						type: 'file',
-						language: 'php',
-						icon: 'svelte'
-					}}
-				/>
+				{@const fileName = $selectedItem.getAttribute('data-id')!.split('-')[0]}
+				{@const selectedFile = $project.children.find((child) => child.name === fileName)}
+				{#if selectedFile && selectedFile.type === 'file'}
+					<Editor child={selectedFile} />
+				{/if}
 			{/if}
 		</Pane>
 	</PaneGroup>
