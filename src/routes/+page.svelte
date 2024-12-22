@@ -16,6 +16,9 @@
 		elements: { tree },
 		states: { selectedItem }
 	} = ctx;
+
+	$: fileName = $selectedItem?.getAttribute('data-id') ?? '';
+	$: selectedFile = getChildFromPath($project, fileName);
 </script>
 
 <div class="h-full">
@@ -29,13 +32,8 @@
 			class="relative flex w-[1px] items-center justify-center border-r border-surface0 px-[7px] focus:border-surface1"
 		/>
 		<Pane defaultSize={80}>
-			{#if $selectedItem}
-				{@const fileName = $selectedItem.getAttribute('data-id')!.split('-')[0]}
-				{@const selectedFile = getChildFromPath($project, fileName)}
-				{#if selectedFile && selectedFile.type === 'file'}
-					<Editor child={selectedFile} />
-					<!-- {JSON.stringify(selectedFile, null, 2)} -->
-				{/if}
+			{#if selectedFile && selectedFile.type === 'file'}
+				<Editor child={selectedFile} />
 			{/if}
 		</Pane>
 	</PaneGroup>
