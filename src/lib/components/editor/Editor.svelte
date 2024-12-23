@@ -1,53 +1,47 @@
 <script lang="ts">
-	import { onDestroy, onMount } from 'svelte';
 	import type { Child } from '$lib/code';
-	import Prism from 'prismjs';
-	import 'prismjs/components/prism-typescript';
-	import 'prismjs/components/prism-javascript';
-	import 'prismjs/components/prism-css';
-	import 'prismjs/components/prism-markdown';
-	import 'prismjs/components/prism-json';
-	import 'prismjs/themes/prism.css';
-	import '../../../prism-mocha.css';
+	import { EditorView, basicSetup } from 'codemirror';
+	import { languages } from '@codemirror/language-data';
 
-	Prism.plugins.autoloader.languages_path =
-		'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/';
-	import 'prismjs/plugins/autoloader/prism-autoloader.min.js';
+	const { child } = $props<{ child: Child & { type: 'file' } }>();
 
-	let el: HTMLElement;
-	let loaded = false;
-	let jar: any | null = null;
+	let language: any = $state(null);
 
-	$: if (jar && child) {
-		jar.updateCode(child.content);
-		el.className = `language-${child.language} line-numbers`;
-		Prism.highlightElement(el);
+	async function loadLanguage() {
+		language = (
+			await languages
+				.find((lang) => lang.name.toLowerCase() === child.language.toLowerCase())
+				?.load()
+		)?.extension;
 	}
 
-	onMount(async () => {
-		const { CodeJar } = await import('codejar') as { CodeJar: any };
+	let el: HTMLElement;
 
-		// Force Prism to highlight with the correct language
-		const highlight = (editor: HTMLElement) => {
-			editor.className = `language-${child.language} line-numbers`;
-			Prism.highlightElement(editor);
-		};
-
-		jar = new CodeJar(el, highlight);
-		jar.onUpdate((code: string) => {
-			child.content = code;
-		});
-		loaded = true;
+	$effect(() => {
+		if (child.language) {
+			loadLanguage();
+		}
 	});
 
-	onDestroy(() => {
-		jar?.destroy();
-	});
+	$effect(() => {
+		if (el && language) {
+			const editor = new EditorView({
+				doc: child.content,
+				extensions: [
+					basicSetup,
+					language,
+					EditorView.updateListener.of(function (e) {
+						if (e.docChanged) {
+							child.content = e.state.doc.toString();
+						}
+					})
+				],
+				parent: el
+			});
 
-	export let child: Child & { type: 'file' };
+			return () => editor.destroy();
+		}
+	});
 </script>
 
-<pre bind:this={el} class="language-{child.language}"></pre>
-{#if !loaded}
-	<pre><code>{child.content}</code></pre>
-{/if}
+<div bind:this={el}></div>
