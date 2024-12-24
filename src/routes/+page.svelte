@@ -23,13 +23,13 @@
 
 <div class="h-full">
 	<PaneGroup direction="horizontal" class="h-full">
-		<Pane minSize={20}>
+		<Pane minSize={20} class="bg-mantle">
 			<ul class="overflow-hidden px-4 pb-4 pt-2" {...$tree}>
 				<Tree />
 			</ul>
 		</Pane>
 		<PaneResizer
-			class="relative flex w-[1px] items-center justify-center border-r border-surface0 px-[7px] focus:border-surface1"
+			class="relative flex w-[1px] items-center justify-center border-r border-surface0 bg-mantle px-[7px] focus:border-surface1"
 		/>
 		<Pane defaultSize={80}>
 			{#if selectedFile && selectedFile.type === 'file'}
