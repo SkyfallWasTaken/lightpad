@@ -2,8 +2,12 @@
 	import type { Child } from '$lib/code';
 	import { EditorView, basicSetup } from 'codemirror';
 	import { languages } from '@codemirror/language-data';
-	import { catppuccinMocha } from '$lib/editor/mocha';
+	import { indentWithTab } from '@codemirror/commands';
+	import { keymap } from '@codemirror/view';
+	import { autocompletion } from '@codemirror/autocomplete';
 	import type { Extension } from '@codemirror/state';
+
+	import { catppuccinMocha } from '$lib/editor/mocha';
 
 	const { child } = $props<{ child: Child & { type: 'file' } }>();
 
@@ -33,6 +37,8 @@
 					basicSetup,
 					language,
 					catppuccinMocha,
+					keymap.of([indentWithTab]),
+
 					EditorView.theme({
 						'.cm-scroller': {
 							overflow: 'auto'

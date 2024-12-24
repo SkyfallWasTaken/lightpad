@@ -22,7 +22,112 @@ export const project = writable<Project>({
 					type: 'file',
 					language: 'html',
 					content: '<h1>Goodbye world</h1>'
-				}
+				},
+				{
+					name: 'App.svelte',
+					icon: 'svelte',
+					type: 'file',
+					language: 'html',
+					content: '<h1>Goodbye world</h1>'
+				},
+				{
+					name: 'styles.css',
+					icon: 'svelte',
+					type: 'file',
+					language: 'css',
+					content: 'h1 { color: red }'
+				},
+				{
+					name: 'main.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main2.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main3.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main4.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main5.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main6.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main7.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main8.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main9.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main10.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main11.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main12.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
+				{
+					name: 'main13.js',
+					icon: 'js',
+					type: 'file',
+					language: 'javascript',
+					content: 'console.log("Hello world")'
+				},
 			]
 		}
 	]
