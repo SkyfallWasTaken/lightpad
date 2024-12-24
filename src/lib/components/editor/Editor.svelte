@@ -2,10 +2,12 @@
 	import type { Child } from '$lib/code';
 	import { EditorView, basicSetup } from 'codemirror';
 	import { languages } from '@codemirror/language-data';
+	import { catppuccinMocha } from '$lib/editor/mocha';
+	import type { Extension } from '@codemirror/state';
 
 	const { child } = $props<{ child: Child & { type: 'file' } }>();
 
-	let language: any = $state(null);
+	let language: Extension | undefined = $state();
 
 	async function loadLanguage() {
 		language = (
@@ -30,6 +32,18 @@
 				extensions: [
 					basicSetup,
 					language,
+					catppuccinMocha,
+					EditorView.theme({
+						'.cm-scroller': {
+							overflow: 'auto'
+						},
+						'.cm-content, .cm-gutter': {
+							fontFamily: 'Fira Mono, Menlo, Monaco, Lucida Console, monospace'
+						},
+						'.cm-content': {
+							minHeight: '100%'
+						}
+					}),
 					EditorView.updateListener.of(function (e) {
 						if (e.docChanged) {
 							child.content = e.state.doc.toString();
@@ -44,4 +58,4 @@
 	});
 </script>
 
-<div bind:this={el}></div>
+<div bind:this={el} class="h-full w-full"></div>

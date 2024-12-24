@@ -1,6 +1,7 @@
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import catppuccin from '@catppuccin/tailwindcss';
+
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss';
 
@@ -15,17 +16,5 @@ export default {
 		}
 	},
 
-	plugins: [typography, forms, catppuccin, plugin(function ({ addVariant, matchUtilities, theme }) {
-		addVariant('hocus', ['&:hover', '&:focus'])
-		// Square utility
-		matchUtilities(
-			{
-				square: (value) => ({
-					width: value,
-					height: value
-				})
-			},
-			{ values: theme('spacing') }
-		)
-	})]
+	plugins: [typography, forms, catppuccin]
 } satisfies Config;
