@@ -4,7 +4,7 @@
 	import { languages } from '@codemirror/language-data';
 	import { indentWithTab } from '@codemirror/commands';
 	import { keymap } from '@codemirror/view';
-	import { autocompletion } from '@codemirror/autocomplete';
+	import { acceptCompletion, autocompletion } from '@codemirror/autocomplete';
 	import type { Extension } from '@codemirror/state';
 
 	import { catppuccinMocha } from '$lib/editor/mocha';
@@ -37,7 +37,7 @@
 					basicSetup,
 					language,
 					catppuccinMocha,
-					keymap.of([indentWithTab]),
+					keymap.of([{ key: 'Tab', run: acceptCompletion }, indentWithTab]),
 
 					EditorView.theme({
 						'.cm-scroller': {
