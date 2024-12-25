@@ -17,6 +17,9 @@ importers:
       '@codemirror/commands':
         specifier: ^6.7.1
         version: 6.7.1
+      '@codemirror/language':
+        specifier: ^6.10.8
+        version: 6.10.8
       '@codemirror/language-data':
         specifier: ^6.5.1
         version: 6.5.1
@@ -62,12 +65,6 @@ importers:
       paneforge:
         specifier: ^0.0.6
         version: 0.0.6(svelte@5.15.0)
-      tailwindcss-all:
-        specifier: ^0.0.2
-        version: 0.0.2
-      thememirror:
-        specifier: ^2.0.1
-        version: 2.0.1(@codemirror/language@6.10.8)(@codemirror/state@6.5.0)(@codemirror/view@6.36.1)
     devDependencies:
       '@catppuccin/tailwindcss':
         specifier: ^0.1.6
@@ -2261,20 +2258,10 @@ packages:
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
 
-  tailwindcss-all@0.0.2:
-    resolution: {integrity: sha512-TVcYjtVn/y9mCxxN6RhaONyvD23HantNLtq7wuEZV9xDgZ4K9tCJ4RJNeKH7d6jSwQMuNHDJVV0WOFBNVuSyjw==}
-
   tailwindcss@3.4.17:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
     engines: {node: '>=14.0.0'}
     hasBin: true
-
-  thememirror@2.0.1:
-    resolution: {integrity: sha512-d5i6FVvWWPkwrm4cHLI3t9AT1OrkAt7Ig8dtdYSofgF7C/eiyNuq6zQzSTusWTde3jpW9WLvA9J/fzNKMUsd0w==}
-    peerDependencies:
-      '@codemirror/language': ^6.0.0
-      '@codemirror/state': ^6.0.0
-      '@codemirror/view': ^6.0.0
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -4450,8 +4437,6 @@ snapshots:
 
   tabbable@6.2.0: {}
 
-  tailwindcss-all@0.0.2: {}
-
   tailwindcss@3.4.17:
     dependencies:
       '@alloc/quick-lru': 5.2.0
@@ -4478,12 +4463,6 @@ snapshots:
       sucrase: 3.35.0
     transitivePeerDependencies:
       - ts-node
-
-  thememirror@2.0.1(@codemirror/language@6.10.8)(@codemirror/state@6.5.0)(@codemirror/view@6.36.1):
-    dependencies:
-      '@codemirror/language': 6.10.8
-      '@codemirror/state': 6.5.0
-      '@codemirror/view': 6.36.1
 
   thenify-all@1.6.0:
     dependencies:

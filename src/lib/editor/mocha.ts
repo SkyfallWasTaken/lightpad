@@ -103,9 +103,6 @@ export const catppuccinMochaTheme = EditorView.theme({
     '.cm-cursor, .cm-dropCursor': {
         borderLeftColor: settings.caret,
     },
-    '&.cm-focused .cm-selectionBackground, .cm-content ::selection': {
-        backgroundColor: settings.selection,
-    },
     '.cm-activeLine': {
         backgroundColor: settings.lineHighlight,
     },
@@ -118,7 +115,7 @@ export const catppuccinMochaTheme = EditorView.theme({
     },
 
     ".cm-selectionMatch": { backgroundColor: "#aafe661a" },
-    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: "#afdaad" },
+    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: "#3b3c4f" },
 }, {
     dark: true
 });
