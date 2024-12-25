@@ -37,6 +37,7 @@
 					basicSetup,
 					language,
 					catppuccinMocha,
+					//oneDark,
 					keymap.of([{ key: 'Tab', run: acceptCompletion }, indentWithTab]),
 
 					EditorView.theme({
