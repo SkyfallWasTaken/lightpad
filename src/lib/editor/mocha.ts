@@ -6,7 +6,7 @@ import { flavors } from "@catppuccin/palette"
 
 const mocha = flavors.mocha.colors;
 
-/// The editor theme styles for One Dark.
+/// The editor theme styles for Catppuccin Mocha.
 const cursor = mocha.peach.hex;
 const tooltipBackground = mocha.overlay0.hex;
 const highlightBackground = mocha.overlay1.hex;
@@ -25,22 +25,23 @@ export const catppuccinMochaTheme = EditorView.theme({
     "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: "#3b3c4f" },
 
     ".cm-panels": { backgroundColor: mocha.surface0.hex, color: mocha.text.hex },
-    ".cm-panels.cm-panels-top": { borderBottom: "2px solid black" },
-    ".cm-panels.cm-panels-bottom": { borderTop: "2px solid black" },
+    ".cm-panels.cm-panels-top": { borderBottom: `1px solid ${mocha.overlay0.hex}` },
+    ".cm-panels.cm-panels-bottom": { borderTop: `1px solid ${mocha.overlay0.hex}` },
 
     ".cm-searchMatch": {
-        backgroundColor: mocha.peach.hex,
-        outline: "1px solid #457dff"
+        backgroundColor: mocha.flamingo.hex + '66',
+        outline: `1px solid ${mocha.flamingo.hex}`
     },
     ".cm-searchMatch.cm-searchMatch-selected": {
-        backgroundColor: "#6199ff2f"
+        backgroundColor: mocha.red.hex + '66',
+        outline: `1px solid ${mocha.red.hex}`
     },
 
     ".cm-activeLine": { backgroundColor: "#6699ff0b" },
-    ".cm-selectionMatch": { backgroundColor: "#aafe661a" },
+    ".cm-selectionMatch": { backgroundColor: mocha.flamingo.hex + '66' },
 
     "&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket": {
-        backgroundColor: "#bad0f847"
+        outline: `1px solid ${mocha.surface0.hex}`
     },
 
     ".cm-gutters": {
@@ -100,8 +101,12 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
         fontStyle: "italic"
     },
     {
-        tag: [t.color, t.constant(t.name), t.standard(t.name)],
+        tag: [t.color, t.constant(t.name)],
         color: mocha.peach.hex
+    },
+    {
+        tag: t.standard(t.name),
+        color: mocha.red.hex
     },
     {
         tag: [t.definition(t.name), t.separator],
@@ -146,7 +151,7 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
         color: mocha.flamingo.hex
     },
     {
-        tag: [t.atom, t.bool, t.variableName],
+        tag: [t.atom, t.bool, t.number, t.variableName],
         color: mocha.peach.hex
     },
     {
@@ -157,12 +162,8 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
         tag: t.invalid,
         color: mocha.red.hex
     },
-    {
-        tag: t.number,
-        color: mocha.peach.hex
-    }
 ])
 
-/// Extension to enable the One Dark theme (both the editor theme and
+/// Extension to enable the Catppuccin Mocha theme (both the editor theme and
 /// the highlight style).
 export const catppuccinMocha: Extension = [catppuccinMochaTheme, syntaxHighlighting(catppuccinMochaHighlightStyle)]
