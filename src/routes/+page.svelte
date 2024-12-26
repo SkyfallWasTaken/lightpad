@@ -22,7 +22,7 @@
 </script>
 
 <div class="h-full">
-	<PaneGroup direction="horizontal" class="h-full">
+	<PaneGroup direction="horizontal">
 		<Pane minSize={20} class="bg-mantle">
 			<ul class="overflow-hidden px-4 pb-4 pt-2" {...$tree}>
 				<Tree />
