@@ -8,8 +8,8 @@
 	import type { Extension } from '@codemirror/state';
 
 	import { catppuccinMocha } from '$lib/editor/mocha';
-	import { oneDark } from '@codemirror/theme-one-dark';
-
+	/* 	import { oneDark } from '@codemirror/theme-one-dark';
+	 */
 	const { child } = $props<{ child: Child & { type: 'file' } }>();
 
 	let language: Extension | undefined = $state();
@@ -37,8 +37,8 @@
 				extensions: [
 					basicSetup,
 					language,
-					//catppuccinMocha,
-					oneDark,
+					catppuccinMocha,
+					//oneDark,
 					keymap.of([{ key: 'Tab', run: acceptCompletion }, indentWithTab]),
 
 					EditorView.theme({

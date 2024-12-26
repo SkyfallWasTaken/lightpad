@@ -1,63 +1,127 @@
-import { tags as t } from '@lezer/highlight';
-import { EditorView } from 'codemirror';
-import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
+import { EditorView } from "@codemirror/view"
+import type { Extension } from "@codemirror/state"
+import { HighlightStyle, syntaxHighlighting } from "@codemirror/language"
+import { tags as t } from "@lezer/highlight"
+import { flavors } from "@catppuccin/palette"
 
-const highlightStyles = [
-    {
-        tag: t.comment,
-        color: '#6c7086',
+const mocha = flavors.mocha.colors;
+
+/// The editor theme styles for One Dark.
+const cursor = mocha.peach.hex;
+const tooltipBackground = mocha.overlay0.hex;
+const highlightBackground = mocha.overlay1.hex;
+
+export const catppuccinMochaTheme = EditorView.theme({
+    "&": {
+        color: mocha.text.hex,
+        backgroundColor: mocha.base.hex
     },
-    {
-        tag: t.variableName,
-        color: '#eba0ac',
+
+    ".cm-content": {
+        caretColor: cursor
     },
-    {
-        tag: [t.string, t.special(t.brace)],
-        color: '#a6e3a1',
+
+    ".cm-cursor, .cm-dropCursor": { borderLeftColor: cursor },
+    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: "#afdaad" },
+
+    ".cm-panels": { backgroundColor: mocha.surface0.hex, color: mocha.text.hex },
+    ".cm-panels.cm-panels-top": { borderBottom: "2px solid black" },
+    ".cm-panels.cm-panels-bottom": { borderTop: "2px solid black" },
+
+    ".cm-searchMatch": {
+        backgroundColor: mocha.peach.hex,
+        outline: "1px solid #457dff"
     },
-    {
-        tag: t.number,
-        color: '#fab387',
+    ".cm-searchMatch.cm-searchMatch-selected": {
+        backgroundColor: "#6199ff2f"
     },
-    {
-        tag: t.bool,
-        color: '#fab387',
+
+    ".cm-activeLine": { backgroundColor: "#6699ff0b" },
+    ".cm-selectionMatch": { backgroundColor: "#aafe661a" },
+
+    "&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket": {
+        backgroundColor: "#bad0f847"
     },
-    {
-        tag: t.null,
-        color: '#f9e2af',
+
+    ".cm-gutters": {
+        backgroundColor: mocha.base.hex,
+        color: mocha.text.hex,
+        border: "none"
     },
+
+    ".cm-activeLineGutter": {
+        backgroundColor: "#6699ff0b"
+    },
+
+    ".cm-foldPlaceholder": {
+        backgroundColor: "transparent",
+        border: "none",
+        color: "#ddd"
+    },
+
+    ".cm-tooltip": {
+        border: "none",
+        backgroundColor: tooltipBackground,
+    },
+    ".cm-tooltip .cm-tooltip-arrow:before": {
+        borderTopColor: "transparent",
+        borderBottomColor: "transparent"
+    },
+    ".cm-tooltip .cm-tooltip-arrow:after": {
+        borderTopColor: tooltipBackground,
+        borderBottomColor: tooltipBackground
+    },
+    ".cm-tooltip-autocomplete": {
+        "& > ul > li[aria-selected]": {
+            backgroundColor: highlightBackground,
+            color: mocha.text.hex
+        }
+    }
+}, { dark: true })
+
+
+export const catppuccinMochaHighlightStyle = HighlightStyle.define([
     {
         tag: t.keyword,
-        color: '#cba6f7',
+        color: mocha.mauve.hex
     },
     {
-        tag: t.operator,
-        color: '#94e2d5',
+        tag: [t.name, t.deleted, t.character],
+        color: mocha.red.hex
     },
     {
-        tag: t.className,
-        color: '#f9e2af',
+        tag: [t.propertyName, t.macroName],
+        color: mocha.blue.hex,
+        fontStyle: "italic"
     },
     {
-        tag: t.definition(t.typeName),
-        color: '#f9e2af',
+        tag: [t.function(t.variableName), t.labelName],
+        color: mocha.blue.hex,
+        fontStyle: "italic"
     },
     {
-        tag: t.typeName,
-        color: '#cba6f7',
+        tag: [t.color, t.constant(t.name), t.standard(t.name)],
+        color: mocha.peach.hex
     },
     {
-        tag: t.angleBracket,
-        color: '#94e2d5',
+        tag: [t.definition(t.name), t.separator],
+        color: mocha.mantle.hex
     },
     {
-        tag: t.tagName,
-        color: '#89b4fa',
+        tag: [t.typeName, t.className, t.number, t.changed, t.annotation, t.modifier, t.self, t.namespace],
+        color: mocha.blue.hex
     },
     {
-        tag: t.attributeName,
-        color: '#f9e2af',
+        tag: [t.operator, t.operatorKeyword, t.url, t.escape, t.regexp, t.link, t.special(t.string)],
+        color: mocha.sky.hex
+    },
+    {
+        tag: t.meta,
+        color: mocha.mauve.hex
+    },
+    {
+        tag: t.comment,
+        color: mocha.overlay0.hex
     },
     {
         tag: t.strong,
@@ -73,51 +137,28 @@ const highlightStyles = [
     },
     {
         tag: t.link,
+        color: mocha.surface0.hex,
         textDecoration: "underline"
     },
     {
         tag: t.heading,
         fontWeight: "bold",
-        color: "#f38ba8"
+        color: mocha.flamingo.hex
     },
-]
+    {
+        tag: [t.atom, t.bool, t.special(t.variableName)],
+        color: mocha.peach.hex
+    },
+    {
+        tag: [t.processingInstruction, t.string, t.inserted],
+        color: mocha.teal.hex
+    },
+    {
+        tag: t.invalid,
+        color: mocha.red.hex
+    },
+])
 
-const settings = {
-    background: '#1e1e2e',
-    foreground: '#cdd6f4',
-    caret: '#f5e0dc',
-    selection: '#3b3c4f',
-    lineHighlight: '#2a2b3c',
-    gutterBackground: '#1e1e2e',
-    gutterForeground: '#cdd6f4',
-}
-
-export const catppuccinMochaTheme = EditorView.theme({
-    '&': {
-        backgroundColor: settings.background,
-        color: settings.foreground,
-    },
-    '.cm-content': {
-        caretColor: settings.caret,
-    },
-    '.cm-cursor, .cm-dropCursor': {
-        borderLeftColor: settings.caret,
-    },
-    '.cm-activeLine': {
-        backgroundColor: settings.lineHighlight,
-    },
-    '.cm-gutters': {
-        backgroundColor: settings.gutterBackground,
-        color: settings.gutterForeground,
-    },
-    '.cm-activeLineGutter': {
-        backgroundColor: settings.lineHighlight,
-    },
-
-    ".cm-selectionMatch": { backgroundColor: "#aafe661a" },
-    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: "#3b3c4f" },
-}, {
-    dark: true
-});
-const highlightStyle = HighlightStyle.define(highlightStyles);
-export const catppuccinMocha = [catppuccinMochaTheme, syntaxHighlighting(highlightStyle)];
+/// Extension to enable the One Dark theme (both the editor theme and
+/// the highlight style).
+export const catppuccinMocha: Extension = [catppuccinMochaTheme, syntaxHighlighting(catppuccinMochaHighlightStyle)]
