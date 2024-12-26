@@ -22,7 +22,7 @@ export const catppuccinMochaTheme = EditorView.theme({
     },
 
     ".cm-cursor, .cm-dropCursor": { borderLeftColor: cursor },
-    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: "#afdaad" },
+    "&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection": { backgroundColor: "#3b3c4f" },
 
     ".cm-panels": { backgroundColor: mocha.surface0.hex, color: mocha.text.hex },
     ".cm-panels.cm-panels-top": { borderBottom: "2px solid black" },
