@@ -91,7 +91,7 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
     },
     {
         tag: [t.propertyName, t.macroName],
-        color: mocha.blue.hex,
+        color: mocha.yellow.hex,
         fontStyle: "italic"
     },
     {
@@ -105,10 +105,10 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
     },
     {
         tag: [t.definition(t.name), t.separator],
-        color: mocha.mantle.hex
+        color: mocha.overlay2.hex
     },
     {
-        tag: [t.typeName, t.className, t.number, t.changed, t.annotation, t.modifier, t.self, t.namespace],
+        tag: [t.typeName, t.number, t.changed, t.annotation, t.modifier, t.self, t.namespace],
         color: mocha.blue.hex
     },
     {
@@ -146,7 +146,7 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
         color: mocha.flamingo.hex
     },
     {
-        tag: [t.atom, t.bool, t.special(t.variableName)],
+        tag: [t.atom, t.bool, t.variableName],
         color: mocha.peach.hex
     },
     {
@@ -157,6 +157,10 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
         tag: t.invalid,
         color: mocha.red.hex
     },
+    {
+        tag: t.number,
+        color: mocha.peach.hex
+    }
 ])
 
 /// Extension to enable the One Dark theme (both the editor theme and
