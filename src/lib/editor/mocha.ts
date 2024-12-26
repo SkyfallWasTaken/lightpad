@@ -151,7 +151,7 @@ export const catppuccinMochaHighlightStyle = HighlightStyle.define([
     },
     {
         tag: [t.processingInstruction, t.string, t.inserted],
-        color: mocha.teal.hex
+        color: mocha.green.hex
     },
     {
         tag: t.invalid,
