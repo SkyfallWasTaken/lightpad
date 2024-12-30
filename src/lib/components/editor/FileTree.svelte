@@ -1,5 +1,8 @@
 <script context="module" lang="ts">
-	import { ArrowLeft, Folder, FolderOpen } from 'lucide-svelte';
+	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
+	import Folder from 'lucide-svelte/icons/folder';
+	import FolderOpen from 'lucide-svelte/icons/folder-open';
+
 	import JS from '$lib/components/editor/icons/JS.svelte';
 	import Svelte from '$lib/components/editor/icons/Svelte.svelte';
 

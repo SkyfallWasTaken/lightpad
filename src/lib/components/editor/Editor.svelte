@@ -8,6 +8,7 @@
 	import type { Extension } from '@codemirror/state';
 
 	import { catppuccinMocha } from '$lib/editor/mocha';
+	import { flavors } from '@catppuccin/palette';
 	/* 	import { oneDark } from '@codemirror/theme-one-dark';
 	 */
 	const { child } = $props<{ child: Child & { type: 'file' } }>();
@@ -50,6 +51,16 @@
 						},
 						'.cm-content': {
 							minHeight: '100%'
+						},
+						'.cm-button': {
+							background: flavors.mocha.colors.crust.hex,
+							border: `none`
+						},
+						'input[type="checkbox"]': {
+							background: flavors.mocha.colors.crust.hex
+						},
+						'input[type="checkbox"]:checked': {
+							background: flavors.mocha.colors.mauve.hex
 						}
 					}),
 					EditorView.updateListener.of(function (e) {
