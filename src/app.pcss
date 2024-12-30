@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+[data-button-root] {
+    @apply flex mx-auto focus:outline-none hover:brightness-110 transition rounded text-lg;
+}
+
+[data-button-root].btn-small {
+    @apply py-0.5 px-4;
+}

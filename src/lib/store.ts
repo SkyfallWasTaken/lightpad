@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import type { Project, Child } from './code';
 
 export const project = writable<Project>({
-	name: null,
+	name: "Lorem",
 	children: [
 		{
 			name: 'index.html',

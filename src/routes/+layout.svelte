@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Header from '$lib/components/layout/Header.svelte';
-	import '../app.css';
+	import '../app.pcss';
 	import '@fontsource/fira-mono';
 	let { children } = $props();
 </script>
