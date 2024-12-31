@@ -4,10 +4,11 @@ import { json } from "@sveltejs/kit";
 import { eq } from "drizzle-orm";
 
 export async function GET({ params }) {
-    const project = await db.select().from(projects).where(eq(projects.id, params.id)).get();
+    let project = await db.select().from(projects).where(eq(projects.id, params.id)).get();
     if (!project) {
         return new Response("Not Found", { status: 404 });
     }
+    project.content = JSON.parse(project.content);
     return json(project)
 }
 
