@@ -61,6 +61,8 @@
 		"bits-ui": "^0.22.0",
 		"codemirror": "^6.0.1",
 		"drizzle-orm": "^0.33.0",
-		"paneforge": "^0.0.6"
+		"nanoid": "^5.0.9",
+		"paneforge": "^0.0.6",
+		"zod": "^3.24.1"
 	}
 }
