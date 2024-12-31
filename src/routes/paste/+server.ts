@@ -2,7 +2,6 @@ import { db } from "$lib/server/db"
 import { projects } from "$lib/server/db/schema";
 import { json } from "@sveltejs/kit";
 import { nanoid } from "nanoid";
-import { eq } from "drizzle-orm";
 
 export async function POST({ request, locals }) {
     const project = await request.json();
