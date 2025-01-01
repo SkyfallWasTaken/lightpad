@@ -1,17 +1,7 @@
 name = "lightpad"
 pages_build_output_dir = ".svelte-kit/cloudflare"
 compatibility_date = "2024-12-31"
-
-[env.production]
-compatibility_date = "2024-12-31"
 compatibility_flags = [ "nodejs_compat" ]
 
-[[env.production.vars]]
+[vars]
 NODE_VERSION = "22"
-
-[[env.preview.vars]]
-NODE_VERSION = "22"
-
-[env.preview]
-compatibility_date = "2024-12-31"
-compatibility_flags = [ "nodejs_compat" ]
