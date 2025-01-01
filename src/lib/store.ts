@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import type { Project, Child } from './code';
 
 export const project = writable<Project>({
-	name: "Lorem",
+	name: 'Lorem',
 	isOwner: true,
 	children: [
 		{
@@ -13,7 +13,7 @@ export const project = writable<Project>({
 			content: '<h1>Hello world</h1>'
 		},
 		{
-			name: "src",
+			name: 'src',
 			icon: 'folder',
 			type: 'folder',
 			children: [
@@ -128,7 +128,7 @@ export const project = writable<Project>({
 					type: 'file',
 					language: 'javascript',
 					content: 'console.log("Hello world")'
-				},
+				}
 			]
 		}
 	]
@@ -141,7 +141,7 @@ export function getChildFromPath(project: Project, path: string): Child | undefi
 	let current: Child[] = project.children;
 
 	for (const segment of segments) {
-		const found = current.find(child => child.name === segment);
+		const found = current.find((child) => child.name === segment);
 		if (!found) return undefined;
 
 		if (found.type === 'folder') {
