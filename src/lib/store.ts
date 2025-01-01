@@ -3,8 +3,8 @@ import type { Project, Child } from './code';
 import { stripIndents } from 'common-tags';
 
 export const project = writable<Project>({
-	name: 'HighSeasDemo',
-	isOwner: false,
+	name: 'High Seas Demo',
+	isOwner: true,
 	children: [
 		{
 			name: 'README.md',
@@ -28,7 +28,7 @@ export const project = writable<Project>({
 			console.log(message)
 			\`\`\`
 
-			Why not give it a try?
+			Why not give it a try? This paste is editable (for yourself).
 			`
 		},
 		{
