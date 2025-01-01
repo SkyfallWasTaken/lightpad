@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PaneGroup, Pane, PaneResizer } from 'paneforge';
 	import { createTreeView } from '@melt-ui/svelte';
-	import { setContext } from 'svelte';
+	import { setContext, onMount } from 'svelte';
 
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import Tree from '$lib/components/editor/FileTree.svelte';
@@ -19,6 +19,11 @@
 
 	$: fileName = $selectedItem?.getAttribute('data-id') ?? '';
 	$: selectedFile = getChildFromPath($project, fileName);
+
+	onMount(() => {
+		const firstItemId = $project.children[0].name;
+		selectedItem.set(document.querySelector(`[data-id="${firstItemId}"]`));
+	});
 </script>
 
 <div class="h-full">
