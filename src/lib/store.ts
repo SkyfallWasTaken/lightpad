@@ -3,8 +3,8 @@ import type { Project, Child } from './code';
 import { stripIndents } from 'common-tags';
 
 export const project = writable<Project>({
-	name: 'Lorem',
-	isOwner: true,
+	name: 'HighSeasDemo',
+	isOwner: false,
 	children: [
 		{
 			name: 'README.md',
@@ -22,6 +22,11 @@ export const project = writable<Project>({
 			- Authenticated pastes with GitHub login
 			- File icons (using the \`vscode-icons\` icon pack)
 			- Multi-file support
+
+			\`\`\`ts
+			const message = "And code blocks too!"
+			console.log(message)
+			\`\`\`
 
 			Why not give it a try?
 			`

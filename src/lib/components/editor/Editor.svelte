@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Child } from '$lib/code';
 	import { EditorView, basicSetup } from 'codemirror';
+	import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 	import { languages } from '@codemirror/language-data';
 	import { indentWithTab } from '@codemirror/commands';
 	import { keymap } from '@codemirror/view';
@@ -38,7 +39,9 @@
 				doc: child.content,
 				extensions: [
 					basicSetup,
-					language,
+					child.language === 'markdown'
+						? markdown({ base: markdownLanguage, codeLanguages: languages })
+						: language,
 					catppuccinMocha,
 					//oneDark,
 					keymap.of([{ key: 'Tab', run: acceptCompletion }, indentWithTab]),
