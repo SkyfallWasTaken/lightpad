@@ -26,6 +26,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{$project.name} | Lightpad</title>
+</svelte:head>
+
 <div class="h-full">
 	<PaneGroup direction="horizontal" style="max-height: calc(100vh - 48px);">
 		<Pane minSize={20} class="bg-mantle" style="overflow-y: auto;">
