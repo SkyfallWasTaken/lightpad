@@ -51,7 +51,7 @@
 		"@codemirror/view": "^6.36.1",
 		"@fontsource/fira-mono": "^5.1.0",
 		"@lezer/highlight": "^1.2.1",
-		"@libsql/client": "^0.9.0",
+		"@libsql/client": "^0.14.0",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"bits-ui": "^0.22.0",
