@@ -1,134 +1,59 @@
 import { writable } from 'svelte/store';
 import type { Project, Child } from './code';
+import { stripIndents } from 'common-tags';
 
 export const project = writable<Project>({
 	name: 'Lorem',
 	isOwner: true,
 	children: [
 		{
-			name: 'index.html',
-			icon: 'svelte',
+			name: 'README.md',
 			type: 'file',
-			language: 'html',
-			content: '<h1>Hello world</h1>'
+			language: 'markdown',
+			content: stripIndents`
+			# Welcome to Lightpad!
+
+			This is a place where you can paste code snippets and share them with the world.
+
+			## Features
+
+			- Markdown support
+			- Syntax highlighting
+			- Authenticated pastes with GitHub login
+			- File icons (using the \`vscode-icons\` icon pack)
+			- Multi-file support
+
+			Why not give it a try?
+			`
 		},
 		{
-			name: 'src',
-			icon: 'folder',
+			name: 'demo',
 			type: 'folder',
 			children: [
 				{
 					name: 'index.html',
-					icon: 'svelte',
 					type: 'file',
 					language: 'html',
 					content: '<h1>Goodbye world</h1>'
 				},
 				{
 					name: 'App.svelte',
-					icon: 'svelte',
 					type: 'file',
 					language: 'html',
 					content: '<h1>Goodbye world</h1>'
 				},
 				{
 					name: 'styles.css',
-					icon: 'svelte',
 					type: 'file',
 					language: 'css',
 					content: 'h1 { color: red }'
 				},
 				{
 					name: 'main.js',
-					icon: 'js',
 					type: 'file',
 					language: 'javascript',
 					content: 'console.log("Hello world")'
 				},
-				{
-					name: 'main2.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main3.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main4.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main5.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main6.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main7.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main8.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main9.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main10.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main11.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main12.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				},
-				{
-					name: 'main13.js',
-					icon: 'js',
-					type: 'file',
-					language: 'javascript',
-					content: 'console.log("Hello world")'
-				}
 			]
 		}
 	]

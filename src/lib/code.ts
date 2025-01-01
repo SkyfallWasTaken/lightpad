@@ -6,7 +6,6 @@ export interface Project {
 
 export interface BaseChild {
 	name: string;
-	icon: string;
 	type: 'file' | 'folder';
 	children?: Child[];
 }

@@ -18,7 +18,7 @@
 	} = getContext<TreeView>('tree');
 </script>
 
-{#each treeItems as { name, icon, children }, i}
+{#each treeItems as { name, type, children }, i}
 	{@const itemId = `${parentPath}${parentPath ? '/' : ''}${name}`}
 	{@const hasChildren = !!children?.length}
 	{@const currentPath = `${parentPath}${parentPath ? '/' : ''}${name}`}
@@ -32,13 +32,13 @@
 			})}
 		>
 			<!-- Add icon. -->
-			{#if icon === 'folder' && $isExpanded(itemId)}
+			{#if type === 'folder' && $isExpanded(itemId)}
 				<img
 					src={`/icons/${getIconForOpenFolder(name)}`}
 					class="h-4 w-4"
 					alt={`Icon for ${name}`}
 				/>
-			{:else if icon === 'folder'}
+			{:else if type === 'folder'}
 				<img src={`/icons/${getIconForFolder(name)}`} class="h-4 w-4" alt={`Icon for ${name}`} />
 			{:else}
 				<img src={`/icons/${getIconForFile(name)}`} class="h-4 w-4" alt={`Icon for ${name}`} />
