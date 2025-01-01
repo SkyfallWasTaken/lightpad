@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 
 export async function POST({ request, locals }) {
 	const project = await request.json();
+	console.log(project);
 	const session = await locals.auth();
 
 	const id = nanoid();
@@ -13,7 +14,7 @@ export async function POST({ request, locals }) {
 		id,
 		name: project.name,
 		owner: session?.user?.id,
-		content: project.content
+		content: JSON.stringify(project)
 	});
 
 	return json({

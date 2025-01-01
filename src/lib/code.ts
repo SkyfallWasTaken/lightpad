@@ -1,5 +1,5 @@
 export interface Project {
-	name: string | null;
+	name: string;
 	isOwner: boolean;
 	children: Child[];
 }
