@@ -22,16 +22,16 @@
 </script>
 
 <div class="h-full">
-	<PaneGroup direction="horizontal">
-		<Pane minSize={20} class="bg-mantle">
-			<ul class="overflow-hidden px-4 pb-4 pt-2" {...$tree}>
+	<PaneGroup direction="horizontal" style="max-height: calc(100vh - 48px);">
+		<Pane minSize={20} class="bg-mantle" style="overflow-y: auto;">
+			<ul class="px-4 pb-4 pt-2" {...$tree}>
 				<Tree />
 			</ul>
 		</Pane>
 		<PaneResizer
 			class="relative flex w-[1px] items-center justify-center border-r border-surface0 bg-mantle px-[7px] focus:border-surface1"
 		/>
-		<Pane defaultSize={80}>
+		<Pane defaultSize={80} style="overflow-y: auto;">
 			{#if selectedFile && selectedFile.type === 'file'}
 				<Editor child={selectedFile} />
 			{/if}
