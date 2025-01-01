@@ -33,11 +33,11 @@
 		>
 			<!-- Add icon. -->
 			{#if icon === 'folder' && $isExpanded(itemId)}
-				<img src={`/icons/${getIconForOpenFolder(name)}`} class="h-4 w-4" />
+				<img src={`/icons/${getIconForOpenFolder(name)}`} class="h-4 w-4" alt={`Icon for ${name}`} />
 			{:else if icon === 'folder'}
-				<img src={`/icons/${getIconForFolder(name)}`} class="h-4 w-4" />
+				<img src={`/icons/${getIconForFolder(name)}`} class="h-4 w-4" alt={`Icon for ${name}`} />
 			{:else}
-				<img src={`/icons/${getIconForFile(name)}`} class="h-4 w-4" />
+				<img src={`/icons/${getIconForFile(name)}`} class="h-4 w-4" alt={`Icon for ${name}`} />
 			{/if}
 
 			<span class="select-none">{name}</span>
