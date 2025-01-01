@@ -3,6 +3,7 @@ import type { Project, Child } from './code';
 
 export const project = writable<Project>({
 	name: "Lorem",
+	isOwner: true,
 	children: [
 		{
 			name: 'index.html',

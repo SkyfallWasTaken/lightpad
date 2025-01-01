@@ -3,13 +3,18 @@ import { projects } from "$lib/server/db/schema";
 import { json } from "@sveltejs/kit";
 import { eq } from "drizzle-orm";
 
-export async function GET({ params }) {
+export async function GET({ params, locals }) {
+    const session = await locals.auth();
+
     let project = await db.select().from(projects).where(eq(projects.id, params.id)).get();
     if (!project) {
         return new Response("Not Found", { status: 404 });
     }
     project.content = JSON.parse(project.content);
-    return json(project)
+    return json({
+        ...project,
+        isOwner: project.owner === session?.user?.id
+    })
 }
 
 export async function PATCH({ request, locals, params }) {
@@ -27,6 +32,7 @@ export async function PATCH({ request, locals, params }) {
     }
 
     const data = await request.json();
+    delete data.isOwner;
     await db.update(projects).set(data).where(eq(projects.id, params.id));
     return json({})
 }

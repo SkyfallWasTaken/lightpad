@@ -4,8 +4,9 @@
 	import { languages } from '@codemirror/language-data';
 	import { indentWithTab } from '@codemirror/commands';
 	import { keymap } from '@codemirror/view';
-	import { acceptCompletion, autocompletion } from '@codemirror/autocomplete';
-	import type { Extension } from '@codemirror/state';
+	import { acceptCompletion } from '@codemirror/autocomplete';
+	import { EditorState, type Extension } from '@codemirror/state';
+	import { project } from '$lib/store';
 
 	import { catppuccinMocha } from '$lib/editor/mocha';
 	import { flavors } from '@catppuccin/palette';
@@ -61,13 +62,17 @@
 						},
 						'input[type="checkbox"]:checked': {
 							background: flavors.mocha.colors.mauve.hex
+						},
+						'.cm-cursor': {
+							opacity: $project.isOwner ? 1 : 0
 						}
 					}),
 					EditorView.updateListener.of(function (e) {
 						if (e.docChanged) {
 							child.content = e.state.doc.toString();
 						}
-					})
+					}),
+					EditorState.readOnly.of(!$project.isOwner)
 				],
 				parent: el
 			});

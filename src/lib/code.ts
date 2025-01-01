@@ -1,5 +1,6 @@
 export interface Project {
 	name: string | null;
+	isOwner: boolean;
 	children: Child[];
 }
 
