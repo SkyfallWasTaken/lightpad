@@ -59,6 +59,7 @@
 		"drizzle-orm": "^0.33.0",
 		"nanoid": "^5.0.9",
 		"paneforge": "^0.0.6",
+		"vscode-icons-js": "^11.6.1",
 		"zod": "^3.24.1"
 	}
 }
