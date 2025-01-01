@@ -5,7 +5,7 @@
 	let { children } = $props();
 </script>
 
-<main class="mocha flex h-full w-full flex-col bg-base font-mono text-text">
+<main class="flex h-full w-full flex-col bg-base font-mono text-text">
 	<Header />
 	<div class="flex-1">
 		{@render children()}

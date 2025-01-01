@@ -3,9 +3,21 @@
 @import 'tailwindcss/utilities';
 
 [data-button-root] {
-    @apply flex mx-auto focus:outline-none hover:brightness-110 transition rounded text-lg;
+	@apply mx-auto rounded text-lg transition hover:brightness-110 focus:outline-none;
 }
 
 [data-button-root].btn-small {
-    @apply py-0.5 px-4;
+	@apply px-4 py-0.5;
+}
+
+[data-avatar-root] {
+	@apply h-8 w-8 *:rounded-full;
+}
+
+[data-popover-content] {
+	@apply rounded-md p-4 shadow-md;
+}
+
+[data-separator-root] {
+	@apply border-[1px] border-t border-surface0;
 }
