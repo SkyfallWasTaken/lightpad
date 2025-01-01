@@ -1,18 +1,6 @@
 <script context="module" lang="ts">
 	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
-	import Folder from 'lucide-svelte/icons/folder';
-	import FolderOpen from 'lucide-svelte/icons/folder-open';
-
-	import JS from '$lib/components/editor/icons/JS.svelte';
-	import Svelte from '$lib/components/editor/icons/Svelte.svelte';
-
-	export const icons = {
-		svelte: Svelte,
-		folder: Folder,
-		folderOpen: FolderOpen,
-		js: JS,
-		highlight: ArrowLeft
-	};
+	import { getIconForFile, getIconForFolder, getIconForOpenFolder } from 'vscode-icons-js';
 </script>
 
 <script lang="ts">
@@ -44,17 +32,19 @@
 			})}
 		>
 			<!-- Add icon. -->
-			{#if icon === 'folder' && hasChildren && $isExpanded(itemId)}
-				<svelte:component this={icons['folderOpen']} class="h-4 w-4" />
+			{#if icon === 'folder' && $isExpanded(itemId)}
+				<img src={`/icons/${getIconForOpenFolder(name)}`} class="h-4 w-4" />
+			{:else if icon === 'folder'}
+				<img src={`/icons/${getIconForFolder(name)}`} class="h-4 w-4" />
 			{:else}
-				<svelte:component this={icons[icon]} class="h-4 w-4" />
+				<img src={`/icons/${getIconForFile(name)}`} class="h-4 w-4" />
 			{/if}
 
 			<span class="select-none">{name}</span>
 
 			<!-- Selected icon. -->
 			{#if $isSelected(itemId)}
-				<svelte:component this={icons['highlight']} class="h-4 w-4" />
+				<ArrowLeft class="h-4 w-4" />
 			{/if}
 		</button>
 

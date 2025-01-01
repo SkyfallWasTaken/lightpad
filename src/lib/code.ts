@@ -4,11 +4,9 @@ export interface Project {
 	children: Child[];
 }
 
-type Icon = 'svelte' | 'folder' | 'js';
-
 export interface BaseChild {
 	name: string;
-	icon: Icon;
+	icon: string;
 	type: 'file' | 'folder';
 	children?: Child[];
 }
