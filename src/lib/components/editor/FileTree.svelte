@@ -25,7 +25,7 @@
 
 	<li class={level !== 1 ? 'pl-4' : ''}>
 		<button
-			class="focus:bg-magnum-200 flex items-center gap-1 rounded-md p-1"
+			class="focus:bg-magnum-200 flex items-center gap-1.5 rounded-md p-1"
 			use:melt={$item({
 				id: itemId,
 				hasChildren
