@@ -1,38 +1,21 @@
-# sv
+# Lightpad
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+![image](https://cloud-m2w7g92ly-hack-club-bot.vercel.app/0image.png)
 
-## Creating a project
+[**Use the hosted instance**](https://lightpad.skyfall.dev/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+Lightpad is a web-based, multi-file Pastebin alternative that lets you create, save, and share code snippets. It's perfect for sharing code files with your friends, classmates, or coworkers, in a super simple way.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Features
 
-# create a new project in my-app
-npx sv create my-app
-```
+- Markdown support
+- Syntax highlighting
+- Authenticated pastes with GitHub login
+- File icons (using the \`vscode-icons\` icon pack)
+- Multi-file support
+- Shareable URLs
+- Code folding
 
-## Developing
+## License
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Lightpad is licensed under the AGPL v3.0 license.
