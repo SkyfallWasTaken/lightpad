@@ -58,7 +58,6 @@ export const project = writable<Project>({
 		}
 	]
 });
-export const pasteCreated = writable(false);
 
 export function getChildFromPath(project: Project, path: string): Child | undefined {
 	if (!path) return undefined;

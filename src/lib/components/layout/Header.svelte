@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { project, pasteCreated } from '$lib/store';
+	import { project } from '$lib/store';
 	import { signIn, signOut } from '@auth/sveltekit/client';
 	import { Avatar, Button, Popover, Separator } from 'bits-ui';
 	import ChevronDown from 'lucide-svelte/icons/chevron-down';
@@ -22,7 +22,6 @@
 			body: JSON.stringify($project)
 		});
 		if (response.ok) {
-			pasteCreated.set(true);
 			pending = false;
 			const json = await response.json();
 			await goto(`/${json.id}`);
@@ -31,6 +30,8 @@
 			alert('Failed to create paste, please try again.');
 		}
 	}
+
+	const pasteCreated = page.url.pathname !== '/';
 </script>
 
 <nav class="w-full bg-crust py-2">
@@ -51,11 +52,11 @@
 					$project.name = $project.name.trim() || 'Untitled';
 				}}
 				bind:textContent={$project.name}
-				class="{$pasteCreated
+				class="{pasteCreated
 					? 'pointer-events-none'
 					: 'mr-2'} rounded px-1 text-sm hover:bg-surface0">{$project.name}</button
 			>
-			{#if $pasteCreated}
+			{#if pasteCreated}
 				<p class="text-sm text-overlay0">by @SkyfallWasTaken</p>
 			{:else}
 				<Button.Root
