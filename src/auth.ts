@@ -5,5 +5,6 @@ export const { handle } = SvelteKitAuth({
     providers: [GitHub],
     // Auth.js docs say that this should be set to true. But for some reason, it isn't!
     // The Discord server shows several people using SvelteKit facing this issue.
+    // FIXME: If not using CF Pages or Vercel, unset this!
     trustHost: true
 })
